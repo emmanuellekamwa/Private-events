@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div class="container">
+  <%= render 'layouts/header' %>
+  <%= yield %>
+  <div class="footer">
+    <p>An event planning application, by <a href="https://twitter.com/AlixKamwa">@AlixKamwa</a>.</p>
+  </div>
+</div> <!-- /container -->
+
   </body>
 </html>
