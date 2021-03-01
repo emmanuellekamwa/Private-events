@@ -9,7 +9,7 @@
     </tr>
   </thead>
 
-  <% object.each do |event| %>
+  <% @events.each do |event| %>
   <tr>
     <td><%= event.date %></td>
     <td><%= link_to event.title, event_path(event) %></td>
