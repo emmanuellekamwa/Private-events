@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
     def new
         @user = User.new
     end
@@ -21,14 +21,14 @@ class UserController < ApplicationController
     end
     
     def index
-        @users = User.paginate(page: params[:page])
+        @users = User.all
     end
     
       private
     
-        def user_params
-            params.require(:user).permit(:name, :email)
-        end 
+    def user_params
+        params.require(:user).permit(:name, :email)
+    end 
 
     def new
         @user = User.new

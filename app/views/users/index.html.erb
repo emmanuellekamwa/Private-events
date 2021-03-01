@@ -1,8 +1,5 @@
 <h1>All Users</h1>
-
-<div class="pagination-wrapper">
-<%= will_paginate %>
-</div>
+<% controller.redirect_to "/signup" %>
 
 <ul class="users">
 <% @users.each do |user| %>
@@ -11,5 +8,3 @@
 
   <% end %>
 </ul>
-
-<%= will_paginate %>
