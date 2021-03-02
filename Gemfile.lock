@@ -203,7 +203,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  bootstrap_form (~> 4.0)
+  bootstrap_form (~> 4.5)
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)

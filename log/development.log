@@ -4040,3 +4040,325 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 1180ms (Views: 949.6ms | ActiveRecord: 13.5ms | Allocations: 24994)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-02 12:59:30 +0100
+  [1m[35m (13.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 30.4ms | Allocations: 845)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 25.5ms | Allocations: 948)
+Completed 200 OK in 542ms (Views: 434.3ms | ActiveRecord: 1.3ms | Allocations: 14857)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:01:09 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 42.7ms | Allocations: 1234)
+  Rendered shared/_table.html.erb (Duration: 0.9ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 96.9ms | Allocations: 1613)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 10.6ms | Allocations: 770)
+Completed 200 OK in 250ms (Views: 147.0ms | ActiveRecord: 1.4ms | Allocations: 8473)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:01:10 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 11.9ms | Allocations: 617)
+  Rendered shared/_table.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 750)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.5ms | Allocations: 758)
+Completed 200 OK in 57ms (Views: 51.9ms | ActiveRecord: 4.0ms | Allocations: 5382)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:02:28 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 4.7ms | Allocations: 609)
+  Rendered shared/_table.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 741)
+Completed 500 Internal Server Error in 282ms (ActiveRecord: 0.2ms | Allocations: 12575)
+
+
+  
+ActionView::Template::Error (couldn't find file 'rails_bootstrap_form' with type 'text/css'
+Checked in these paths: 
+  /home/kamwa/Private-events/app/assets/config
+  /home/kamwa/Private-events/app/assets/images
+  /home/kamwa/Private-events/app/assets/stylesheets
+  /home/kamwa/.rvm/gems/ruby-2.7.2/gems/bootstrap_form-4.5.0/app/assets/stylesheets
+  /home/kamwa/.rvm/gems/ruby-2.7.2/gems/actioncable-6.0.3.5/app/assets/javascripts
+  /home/kamwa/.rvm/gems/ruby-2.7.2/gems/activestorage-6.0.3.5/app/assets/javascripts
+  /home/kamwa/.rvm/gems/ruby-2.7.2/gems/actionview-6.0.3.5/lib/assets/compiled
+  /home/kamwa/.rvm/gems/ruby-2.7.2/gems/turbolinks-source-5.2.0/lib/assets/javascripts
+  /home/kamwa/Private-events/node_modules):
+    2: <html>
+    3: <head>
+    4:   <title>PrivateEvents</title>
+    5:   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    6:   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  
+app/assets/stylesheets/application.css:15
+app/views/layouts/application.html.erb:5
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:03:01 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 9.4ms | Allocations: 630)
+  Rendered shared/_table.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 763)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.0ms | Allocations: 768)
+Completed 200 OK in 79ms (Views: 73.0ms | ActiveRecord: 0.4ms | Allocations: 5549)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:15:32 +0100
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 10.5ms | Allocations: 633)
+  Rendered shared/_table.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 765)
+Completed 500 Internal Server Error in 455ms (ActiveRecord: 0.4ms | Allocations: 12769)
+
+
+  
+ActionView::Template::Error (Error: File to import not found or unreadable: bootstrap.
+        on line 1:1 of app/assets/stylesheets/custom.css.scss
+>> @import "bootstrap";
+
+   ^
+):
+    2: <html>
+    3: <head>
+    4:   <title>PrivateEvents</title>
+    5:   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    6:   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  
+app/assets/stylesheets/custom.css.scss:1
+app/views/layouts/application.html.erb:5
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:33:03 +0100
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 20.0ms | Allocations: 1329)
+  Rendered shared/_table.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 33.0ms | Allocations: 1823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 62.1ms | Allocations: 3431)
+Completed 200 OK in 717ms (Views: 621.2ms | ActiveRecord: 2.7ms | Allocations: 29253)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-02 13:33:14 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 32.4ms | Allocations: 714)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.3ms | Allocations: 703)
+Completed 200 OK in 106ms (Views: 92.4ms | ActiveRecord: 0.2ms | Allocations: 9507)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 13:33:16 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 11.8ms | Allocations: 619)
+  Rendered shared/_table.html.erb (Duration: 4.4ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 752)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 17.1ms | Allocations: 791)
+Completed 200 OK in 223ms (Views: 219.2ms | ActiveRecord: 0.5ms | Allocations: 8534)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-02 13:33:18 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 30.2ms | Allocations: 844)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.7ms | Allocations: 769)
+Completed 302 Found in 204ms (Views: 193.5ms | ActiveRecord: 5.6ms | Allocations: 9132)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-02 13:33:19 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 812.2ms | Allocations: 75007)
+Completed 500 Internal Server Error in 838ms (ActiveRecord: 1.2ms | Allocations: 78665)
+
+
+  
+ActionView::Template::Error (undefined method `bootstrap_form_for' for #<#<Class:0x000055afc91a3f00>:0x000055afc94365d8>):
+    1: <h1>Sign Up</h1>
+    2: 
+    3: <%=  bootstrap_form_for @user, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f| %>
+    4:   <%= f.text_field :name %>
+    5:   <%= f.text_field :email %>
+    6: 
+  
+app/views/users/new.html.erb:3
+Started GET "/users" for 127.0.0.1 at 2021-03-02 16:15:44 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 38.5ms | Allocations: 1341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (37.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 112.9ms | Allocations: 1440)
+Completed 302 Found in 1539ms (Views: 1450.1ms | ActiveRecord: 39.2ms | Allocations: 38781)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-02 16:15:46 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 631.6ms | Allocations: 8271)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 3.8ms | Allocations: 751)
+Completed 200 OK in 685ms (Views: 651.6ms | ActiveRecord: 0.9ms | Allocations: 16163)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-02 16:19:13 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (8.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 39.5ms | Allocations: 1223)
+  Rendered shared/_table.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered events/index.html.erb within layouts/application (Duration: 54.0ms | Allocations: 1601)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 13.4ms | Allocations: 770)
+Completed 200 OK in 154ms (Views: 94.0ms | ActiveRecord: 9.4ms | Allocations: 8447)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-02 16:19:16 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 23.0ms | Allocations: 711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 5.9ms | Allocations: 703)
+Completed 200 OK in 78ms (Views: 69.2ms | ActiveRecord: 0.3ms | Allocations: 6363)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-02 16:19:36 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 14.2ms | Allocations: 556)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.8ms | Allocations: 697)
+Completed 200 OK in 64ms (Views: 53.9ms | ActiveRecord: 0.3ms | Allocations: 5655)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-02 16:32:06 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (28.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 37.1ms | Allocations: 675)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (10.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 17.3ms | Allocations: 785)
+Completed 302 Found in 103ms (Views: 63.4ms | ActiveRecord: 38.6ms | Allocations: 5333)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-02 16:32:06 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 9.9ms | Allocations: 1208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.8ms | Allocations: 741)
+Completed 200 OK in 73ms (Views: 71.2ms | ActiveRecord: 0.2ms | Allocations: 5837)
+
+
+Started GET "/about" for 127.0.0.1 at 2021-03-02 16:32:11 +0100
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (Duration: 33.2ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.6ms | Allocations: 783)
+Completed 200 OK in 65ms (Views: 63.2ms | ActiveRecord: 0.2ms | Allocations: 4863)
+
+
+Started GET "/signin" for 127.0.0.1 at 2021-03-02 16:32:16 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 33.2ms | Allocations: 834)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 13.7ms | Allocations: 750)
+Completed 200 OK in 94ms (Views: 89.8ms | ActiveRecord: 0.2ms | Allocations: 5959)
+
+
