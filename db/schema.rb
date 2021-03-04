@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140526130242) do
   add_index "events", ["creator_id"], name: "index_events_on_creator_id"
 
   create_table "invites", force: true do |t|
-    t.integer  "attendee_id_id"
+    t.integer  "attendee_id"
     t.integer  "attended_event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
