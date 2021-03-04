@@ -4792,3 +4792,230 @@ ActionView::Template::Error (SQLite3::SQLException: no such column: invites.atte
   
 app/views/static_pages/_user_home.html.erb:8
 app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-03 11:23:24 +0100
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-03') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 39.1ms | Allocations: 3385)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 74.7ms | Allocations: 3863)
+Completed 500 Internal Server Error in 245ms (ActiveRecord: 7.3ms | Allocations: 19450)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:10:20 +0100
+  [1m[35m (24.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (51.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:10:22 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  Rendered static_pages/_user_home.html.erb (Duration: 377.2ms | Allocations: 4859)
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 394.7ms | Allocations: 5846)
+  Rendered static_pages/_user_home.html.erb (Duration: 387.7ms | Allocations: 5751)
+Completed 500 Internal Server Error in 1846ms (ActiveRecord: 56.8ms | Allocations: 25376)
+
+
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 400.3ms | Allocations: 6489)
+Completed 500 Internal Server Error in 569ms (ActiveRecord: 2.5ms | Allocations: 10461)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:17:40 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 26.1ms | Allocations: 2283)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 27.7ms | Allocations: 2360)
+Completed 500 Internal Server Error in 164ms (ActiveRecord: 3.3ms | Allocations: 12648)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:21:06 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 18.0ms | Allocations: 2282)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 20.1ms | Allocations: 2359)
+Completed 500 Internal Server Error in 250ms (ActiveRecord: 24.7ms | Allocations: 13361)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:26:39 +0100
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 18.3ms | Allocations: 2282)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 23.6ms | Allocations: 2358)
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 6.1ms | Allocations: 12505)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:32:24 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 20.0ms | Allocations: 2285)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 20.7ms | Allocations: 2361)
+Completed 500 Internal Server Error in 252ms (ActiveRecord: 2.4ms | Allocations: 13120)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 09:32:54 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 17.6ms | Allocations: 2282)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 23.9ms | Allocations: 2359)
+Completed 500 Internal Server Error in 141ms (ActiveRecord: 10.2ms | Allocations: 13949)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
+Started GET "/" for 127.0.0.1 at 2021-03-04 10:14:43 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a94ee5dff32f18991cf79d1a0efd89d5366a60af"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:16:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (8.0ms)[0m  [1m[34mSELECT 1 AS one FROM "events" INNER JOIN "invites" ON "events"."id" = "invites"."attended_event_id" WHERE "invites"."attendee_id_id" = ? AND (Date >= '2021-03-04') LIMIT ?[0m  [["attendee_id_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  Rendered static_pages/_user_home.html.erb (Duration: 19.3ms | Allocations: 2319)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 22.6ms | Allocations: 2392)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 8.4ms | Allocations: 3842)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: invites.attendee_id_id):
+     5: <%= link_to "Create New Event", new_event_path, class: "btn btn-success" %> 
+     6: </div>
+     7: 
+     8: <% if @upcoming_events.any? %>
+     9: <h2>Upcoming</h2>
+    10: <%= render 'shared/table', object: @upcoming_events %>
+    11: <% end %>
+  
+app/views/static_pages/_user_home.html.erb:8
+app/views/static_pages/home.html.erb:3
