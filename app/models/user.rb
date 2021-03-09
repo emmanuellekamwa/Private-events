@@ -1,18 +1,19 @@
 class User < ApplicationRecord
   has_many :events, :foreign_key => :creator_id
 
-  has_many :invites, :foreign_key => :attendee_id
-  has_many :attended_events, :through => :invites
+  has_many :invites, foreign_key: :invitee_id
+  #has_many :attended_events, :through => :invites
 
 
   before_create :create_remember_token
 
-  def upcoming_events
-    self.attended_events.upcoming
+  def past_events
+    # find user events whose date is less than the date now
+    self.events.where("date < ?", Date.today)
   end
 
-  def previous_events
-    self.attended_events.past
+  def upcoming_events
+    events.where("date > ?", Date.today)
   end
 
   def User.new_remember_token
