@@ -13,33 +13,28 @@
 ActiveRecord::Schema.define(version: 2021_02_25_153121) do
 
   create_table "events", force: :cascade do |t|
-    t.integer "attendee_id"
-    t.integer "attended_event_id"
+    t.integer "creator_id"
+    t.string "title"
+    t.datetime "date"
+    t.string "venue"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "creator_id"
-    t.text "description"
-    t.string "title"
-    t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
   create_table "invites", force: :cascade do |t|
-    t.string "location"
-    t.date "date"
+    t.integer "invitee_id"
+    t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"attended_event_id\"", name: "index_invites_on_attended_event_id"
-    t.index "\"attendee_id\"", name: "index_invites_on_attendee_id"
-    t.index "\"attendee_id\", \"attended_event_id\"", name: "index_invites_on_attendee_id_and_attended_event_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.datetime "date"
+    t.string "remember_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "remember_token"
-    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
 end
