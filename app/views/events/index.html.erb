@@ -1,7 +1,7 @@
 <h1>Browse All Events</h1>
 
 <h2>Upcoming</h2>
-<%= render 'shared/table', object: @events_upcoming %>
+<%= render partial: 'shared/table', locals: {events:@events_upcoming} %>
 
 <h2>Past</h2>
-<%= render 'shared/table', object: @events_past %>
+<%= render partial: 'shared/table', locals: {events:@events_past} %>

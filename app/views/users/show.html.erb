@@ -10,18 +10,18 @@
 
 <% if @upcoming_events.any? %>
 <h2>Upcoming</h2>
-<%= render 'shared/table', object: @upcoming_events %>
+<%= render partial: 'shared/table', locals: {events:@upcoming_events} %>
 <% end %>
 
-<% if @previous_events.any? %>
+<% if @past_events.any? %>
 
 <h2>Attended</h2>
-<%= render 'shared/table', object: @previous_events %>
+<%= render partial: 'shared/table', locals: {events:@previous_events} %>
 
 <% end %>
 
 <% if @user.events.any? %>
 <h2>Created by <%= @user.name%></h2>
 
-<%= render 'shared/table', object: @user.events %>
+<%= render partial: 'shared/table', locals: {events:@user.events} %>
 <% end %>

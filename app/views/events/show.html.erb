@@ -16,8 +16,8 @@
 <b>Who's Going:</b>
 
 <ol>
-<% @event.attendees.each do |attendee| %>
-   <li><%= link_to attendee.name, attendee %></li>
+<% @event.invitees.each do |invitee| %>
+   <li><%= link_to invitee.name, invitee %></li>
 
 <% end %>
 </ol>
