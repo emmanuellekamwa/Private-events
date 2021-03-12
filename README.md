@@ -15,10 +15,11 @@ To have access to the project follow the following steps:
 
 # Setup 
 
-- First clone the repository on your local machine
-- Browse into the project's directory by typing cd plus the name of the project file
-- Run bundle install to install the necessary gems
-- Set up the database using rails db:migrate
+- First clone the repository on your local machine by typing git clone followed by the link of your repository
+- cd Private-events
+- Run bundle install to install the necessary gems and run the command yarn 
+- First create the database using the command rails db:create and set up the database using rails db:migrate
+- To start the project, use the command rails server
 
 # Author
 

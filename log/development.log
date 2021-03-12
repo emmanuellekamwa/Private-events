@@ -8463,3 +8463,1431 @@ Processing by StaticPagesController#home as HTML
 Completed 200 OK in 155ms (Views: 140.6ms | ActiveRecord: 4.7ms | Allocations: 12116)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:09:28 +0100
+  [1m[35m (12.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (26.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "c0bb0c5be930ccbacf5ff0d7e8be2a8d6a0d239b"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11')[0m  [["creator_id", 1]]
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 126.5ms | Allocations: 11476)
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."creator_id" = ?[0m  [["creator_id", 1]]
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 22.2ms | Allocations: 2611)
+  Rendered static_pages/_user_home.html.erb (Duration: 191.5ms | Allocations: 16804)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 201.2ms | Allocations: 17281)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 18.9ms | Allocations: 456)
+Completed 200 OK in 4998ms (Views: 4754.9ms | ActiveRecord: 38.8ms | Allocations: 72003)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2021-03-11 18:09:42 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HNJRHMNRK2fOvQlMNlqehz3Bj3XDtkyfGLAqPq+bYRQ9DAZ64SO5/OJNaPFGV9q/aIAOSAr1uWUOdnBYq+EEDw=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "c0bb0c5be930ccbacf5ff0d7e8be2a8d6a0d239b"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_token", "28ac233f3d660d0fe49180c0fb634aae80250e57"], ["updated_at", "2021-03-11 17:09:42.757177"], ["id", 1]]
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[35m (31.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 32.5ms | Allocations: 5295)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:09:42 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 7.7ms | Allocations: 555)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 15.8ms | Allocations: 698)
+Completed 200 OK in 119ms (Views: 103.6ms | ActiveRecord: 0.2ms | Allocations: 5636)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-11 18:09:48 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 29.6ms | Allocations: 946)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 13.1ms | Allocations: 757)
+Completed 302 Found in 85ms (Views: 82.6ms | ActiveRecord: 0.5ms | Allocations: 6116)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-11 18:09:48 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 209.7ms | Allocations: 8196)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 14.0ms | Allocations: 749)
+Completed 200 OK in 266ms (Views: 263.5ms | ActiveRecord: 0.2ms | Allocations: 12973)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-03-11 18:10:03 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"6U0cSDEXp358AMzixG/Qyc1f8d39gMaBIlDN8fLC+fu+B+PSX8kCf1yuPjV6RoYoyRWu0xOLHIMUmgeQdhi7PA==", "user"=>{"name"=>"Roy Ntaate", "email"=>"roy@gmail.com"}, "commit"=>"Create my account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (14.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "remember_token") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Roy Ntaate"], ["email", "roy@gmail.com"], ["created_at", "2021-03-11 17:10:03.463373"], ["updated_at", "2021-03-11 17:10:03.463373"], ["remember_token", "9e2e2adcc6f00c6753ad64f935e0737209461fda"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (8.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "remember_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-03-11 17:10:03.525249"], ["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["id", 2]]
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 133ms (ActiveRecord: 29.1ms | Allocations: 9065)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-03-11 18:10:03 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mEvent Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mEvent Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:23
+  Rendered users/show.html.erb within layouts/application (Duration: 80.1ms | Allocations: 2889)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 206)
+Completed 200 OK in 138ms (Views: 121.5ms | ActiveRecord: 2.1ms | Allocations: 8015)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-11 18:10:10 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-11') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 47.2ms | Allocations: 2503)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-11') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 7.6ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 77.2ms | Allocations: 3381)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 21.4ms | Allocations: 791)
+Completed 200 OK in 159ms (Views: 149.2ms | ActiveRecord: 1.6ms | Allocations: 8736)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:10:15 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (18.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 60.9ms | Allocations: 3122)
+  Rendered events/_attend_form.html.erb (Duration: 97.0ms | Allocations: 4487)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 145.8ms | Allocations: 7326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 5.2ms | Allocations: 205)
+Completed 200 OK in 207ms (Views: 167.2ms | ActiveRecord: 19.6ms | Allocations: 12223)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-11 18:10:18 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"i34l/cDQB66zFKzhtCuIssEX/U5WTtzGRFPXjktJhfosGE6K4XX3FtksAI9Vh191m4wLAvRr31bIsU7YybEZoQ==", "invite"=>{"event_id"=>"1"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (6.4ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 1], ["created_at", "2021-03-11 17:10:18.807815"], ["updated_at", "2021-03-11 17:10:18.807815"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (22.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 155ms (ActiveRecord: 30.0ms | Allocations: 9751)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:10:18 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  [1m[36mInvite Load (0.4ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."invitee_id" = ? AND "invites"."event_id" = ? LIMIT ?[0m  [["invitee_id", 2], ["event_id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/_cancel.html.erb:1
+  Rendered events/_cancel.html.erb (Duration: 20.9ms | Allocations: 1283)
+  Rendered events/_attend_form.html.erb (Duration: 113.1ms | Allocations: 2477)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 148.3ms | Allocations: 4664)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 205)
+Completed 200 OK in 207ms (Views: 183.4ms | ActiveRecord: 5.9ms | Allocations: 9271)
+
+
+Started DELETE "/invites/3" for 127.0.0.1 at 2021-03-11 18:14:14 +0100
+Processing by InvitesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BsBoZZN0KGGEyOnnj5pT+lEjx15+s98gNLAHIzLR8pUnHj8DsQa6+qg4iFr/lxfCBGJGY7fwKtoidl1FNquXjg==", "commit"=>"Cancel", "id"=>"3"}
+  [1m[36mInvite Load (0.3ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:9:in `destroy'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:9:in `destroy'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mInvite Load (0.3ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."invitee_id" = ? AND "invites"."event_id" = ? LIMIT ?[0m  [["invitee_id", 2], ["event_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:35:in `cancel!'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:35:in `cancel!'
+  [1m[36mInvite Destroy (0.7ms)[0m  [1m[31mDELETE FROM "invites" WHERE "invites"."id" = ?[0m  [["id", 3]]
+  ↳ app/models/user.rb:35:in `cancel!'
+  [1m[35m (38.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:35:in `cancel!'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 129ms (ActiveRecord: 40.5ms | Allocations: 6797)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:14:14 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 9.9ms | Allocations: 461)
+  Rendered events/_attend_form.html.erb (Duration: 33.7ms | Allocations: 1512)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 68.5ms | Allocations: 3653)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 198)
+Completed 200 OK in 129ms (Views: 109.7ms | ActiveRecord: 2.8ms | Allocations: 8258)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-11 18:14:16 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"HnMQ7EdEvVF7PXf62Pf/Hyv2cjseUNKy8rLV3DO1HdM/rUeKZTYvylfNFkeo+rsnfrfzBtcTJ0jkdI+6N894yA==", "invite"=>{"event_id"=>"1"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (4.3ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 1], ["created_at", "2021-03-11 17:14:16.978775"], ["updated_at", "2021-03-11 17:14:16.978775"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (33.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 146ms (ActiveRecord: 38.9ms | Allocations: 8571)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:14:17 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  [1m[36mInvite Load (0.2ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."invitee_id" = ? AND "invites"."event_id" = ? LIMIT ?[0m  [["invitee_id", 2], ["event_id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/_cancel.html.erb:1
+  Rendered events/_cancel.html.erb (Duration: 12.9ms | Allocations: 1123)
+  Rendered events/_attend_form.html.erb (Duration: 33.2ms | Allocations: 2180)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 64.9ms | Allocations: 4365)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 5.4ms | Allocations: 198)
+Completed 200 OK in 119ms (Views: 104.0ms | ActiveRecord: 1.6ms | Allocations: 8978)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2021-03-11 18:14:21 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5AJuy7cLA3wiwXLbbvn3mErTp9TGdQ+4d5kK0fVi1ljF3DmtlXmR5w4xE2Ye9LOgH5Im6Q82+kJhX1C38RizQw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "97c1bd12162bb84d55988afe4b8b224f2a6ca06d"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[36mUser Update (2.5ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_token", "69cad685d2926507dbf599271ac956b6bd05ba7a"], ["updated_at", "2021-03-11 17:14:21.647552"], ["id", 2]]
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[35m (23.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 26.0ms | Allocations: 5071)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:14:21 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 11.0ms | Allocations: 562)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 13.1ms | Allocations: 703)
+Completed 200 OK in 76ms (Views: 71.3ms | ActiveRecord: 0.3ms | Allocations: 5959)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-11 18:14:25 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 751)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 10.8ms | Allocations: 757)
+Completed 302 Found in 62ms (Views: 59.1ms | ActiveRecord: 0.4ms | Allocations: 5391)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-11 18:14:25 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.1ms | Allocations: 742)
+Completed 200 OK in 63ms (Views: 58.8ms | ActiveRecord: 0.3ms | Allocations: 5837)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-03-11 18:14:47 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"pBIhIUsTUMsccTUnRHYsiGaYr+8Rh9Ul1RcnZ+5A1jXzWN67Jc31yjzfx/D6X3ppYtLw4f+MDyfj3e0GapqU8g==", "user"=>{"name"=>"Patricia", "email"=>"patou@gmail.com"}, "commit"=>"Create my account"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (4.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "remember_token") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Patricia"], ["email", "patou@gmail.com"], ["created_at", "2021-03-11 17:14:47.335378"], ["updated_at", "2021-03-11 17:14:47.335378"], ["remember_token", "9beae04aa1bb209b31b4a724085fdbe8c6e0fad9"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "remember_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-03-11 17:14:47.395282"], ["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["id", 3]]
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[35m (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 154ms (ActiveRecord: 33.2ms | Allocations: 9387)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-03-11 18:14:47 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mEvent Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mEvent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:23
+  Rendered users/show.html.erb within layouts/application (Duration: 48.5ms | Allocations: 2576)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 200)
+Completed 200 OK in 107ms (Views: 90.5ms | ActiveRecord: 3.6ms | Allocations: 7435)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-11 18:14:50 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-11') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 38.8ms | Allocations: 2489)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-11') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 13.6ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 57.0ms | Allocations: 3261)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.5ms | Allocations: 782)
+Completed 200 OK in 114ms (Views: 109.6ms | ActiveRecord: 1.6ms | Allocations: 8077)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:14:54 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 7.7ms | Allocations: 460)
+  Rendered events/_attend_form.html.erb (Duration: 25.5ms | Allocations: 1511)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 59.8ms | Allocations: 3696)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 198)
+Completed 200 OK in 117ms (Views: 103.2ms | ActiveRecord: 1.4ms | Allocations: 8297)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-11 18:14:57 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"CclEgeu6sfSVntLeXN30gJN63eJF50YZhf1dMS1fAo+ury/2yh9BTP+mfrC9cSNHyeErrufCRYkJH8Rnr6ee1A==", "invite"=>{"event_id"=>"1"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (3.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (5.8ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 3], ["event_id", 1], ["created_at", "2021-03-11 17:14:57.263463"], ["updated_at", "2021-03-11 17:14:57.263463"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (33.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 142ms (ActiveRecord: 43.1ms | Allocations: 8592)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-11 18:14:57 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  [1m[36mInvite Load (0.2ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."invitee_id" = ? AND "invites"."event_id" = ? LIMIT ?[0m  [["invitee_id", 3], ["event_id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/_cancel.html.erb:1
+  Rendered events/_cancel.html.erb (Duration: 13.6ms | Allocations: 1123)
+  Rendered events/_attend_form.html.erb (Duration: 27.0ms | Allocations: 2180)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 60.2ms | Allocations: 4409)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 198)
+Completed 200 OK in 109ms (Views: 92.5ms | ActiveRecord: 1.4ms | Allocations: 9020)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-11 18:15:07 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-11') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 33.0ms | Allocations: 2487)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-11') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 13.4ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 50.1ms | Allocations: 3259)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.6ms | Allocations: 782)
+Completed 200 OK in 97ms (Views: 93.8ms | ActiveRecord: 1.3ms | Allocations: 8064)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:15:10 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 3], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  Rendered static_pages/_user_home.html.erb (Duration: 34.9ms | Allocations: 2053)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 35.4ms | Allocations: 2124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 204)
+Completed 200 OK in 107ms (Views: 79.3ms | ActiveRecord: 1.0ms | Allocations: 7006)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2021-03-11 18:15:15 +0100
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (Duration: 111.2ms | Allocations: 5051)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.4ms | Allocations: 207)
+Completed 200 OK in 170ms (Views: 154.6ms | ActiveRecord: 1.6ms | Allocations: 9897)
+
+
+Started POST "/events" for 127.0.0.1 at 2021-03-11 18:17:57 +0100
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"+qenQs7pIu3GbXJe5xplqK85EUZMXaCOQi8CdjyvbRwv6qs7q8czL9lx427q9bSs1pxPWpQb48T0QVX2MVcguw==", "event"=>{"title"=>"My awesoome mega birthday", "location"=>"The Buckingham palace", "description"=>"There will be so many famous artists with VIP guests and alot of food and drinks!!! Enjoy yourselves!!", "date"=>"2021-03-29"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[36mEvent Create (8.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "location", "date", "creator_id", "created_at", "updated_at", "description") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "My awesoome mega birthday"], ["location", "The Buckingham palace"], ["date", "2021-03-29 00:00:00"], ["creator_id", 3], ["created_at", "2021-03-11 17:17:57.627882"], ["updated_at", "2021-03-11 17:17:57.627882"], ["description", "There will be so many famous artists with VIP guests and alot of food and drinks!!! Enjoy yourselves!!"]]
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:8:in `create'
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 131ms (ActiveRecord: 12.8ms | Allocations: 6856)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2021-03-11 18:17:57 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 5.9ms | Allocations: 461)
+  Rendered events/_attend_form.html.erb (Duration: 20.2ms | Allocations: 1512)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 52.7ms | Allocations: 3610)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 2.3ms | Allocations: 198)
+Completed 200 OK in 107ms (Views: 89.1ms | ActiveRecord: 1.2ms | Allocations: 8536)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2021-03-11 18:18:04 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9vQco5+WjR7RZ0851hv6/kKDuQ6hItaU3yGgQjUr3SbXKkvFveQfhf2XLoSmFr7GF8I4M2hhI27J5/okMVG4PQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "b6e38f2e1db7b843b08052e7ae6a030fee8ba478"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[36mUser Update (6.2ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_token", "f5e695389e8489ce5e80d10c5d83f6af46262ff4"], ["updated_at", "2021-03-11 17:18:04.515723"], ["id", 3]]
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[35m (32.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+Redirected to http://localhost:3000/
+Completed 302 Found in 90ms (ActiveRecord: 39.1ms | Allocations: 5059)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:18:04 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 9.2ms | Allocations: 562)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 9.8ms | Allocations: 703)
+Completed 200 OK in 74ms (Views: 65.0ms | ActiveRecord: 0.2ms | Allocations: 5971)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-11 18:18:07 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 795)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 15.9ms | Allocations: 757)
+Completed 302 Found in 68ms (Views: 62.0ms | ActiveRecord: 0.4ms | Allocations: 5439)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-11 18:18:07 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 10.4ms | Allocations: 741)
+Completed 200 OK in 62ms (Views: 60.3ms | ActiveRecord: 0.2ms | Allocations: 5845)
+
+
+Started GET "/signin" for 127.0.0.1 at 2021-03-11 18:18:08 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 48.0ms | Allocations: 836)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.9ms | Allocations: 750)
+Completed 200 OK in 105ms (Views: 102.6ms | ActiveRecord: 0.3ms | Allocations: 6011)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-11 18:18:20 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 789)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 13.3ms | Allocations: 757)
+Completed 302 Found in 73ms (Views: 71.7ms | ActiveRecord: 0.5ms | Allocations: 5342)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-11 18:18:20 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 19.1ms | Allocations: 1221)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 9.2ms | Allocations: 741)
+Completed 200 OK in 73ms (Views: 71.4ms | ActiveRecord: 0.2ms | Allocations: 5741)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-11 18:18:22 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"GyqBdjy9idIKAPGKG5isw4TCMuHkprTyvwkjer+N0FJ/BrTD1ML725gb1MHENQ+DEdueZr6FI3yLXjNjjH3Gfw==", "session"=>{"email"=>"emmanuellekamwa@gmail.com"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "emmanuellekamwa@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.8ms | Allocations: 719)
+Completed 200 OK in 66ms (Views: 52.9ms | ActiveRecord: 0.6ms | Allocations: 5861)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-11 18:18:29 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"wxwQPq3ezJFIpDOoVEUj77zcteGqWKuZQjiDiIhvOxbiwkdYj6xeCmRUUhUkSGfX6Z003GMbXmNU/tnujBVeDQ==", "session"=>{"email"=>""}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 9.0ms | Allocations: 719)
+Completed 200 OK in 78ms (Views: 63.5ms | ActiveRecord: 0.4ms | Allocations: 5709)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-11 18:18:34 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"oUSFtmbnO+7CAfCSSkBaHkDVN+4AWmv5lMNTKu8qp2SAmtLQRJWpde7xkS86TR4mFZS208kZngOCBQlM61DCfw==", "session"=>{"email"=>"example@email.com"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.6ms | Allocations: 719)
+Completed 200 OK in 67ms (Views: 52.6ms | ActiveRecord: 0.3ms | Allocations: 5709)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-11 18:19:05 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"jCjwkeWI1nucAN9wJ6xLYnVT9BYsgvEkBzalICVTwROt9qf3x/pE4LDwvs1XoQ9aIBJ1K+XBBN4R8P9GISmkCA==", "session"=>{"email"=>"roy@gmail.com"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "roy@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[36mUser Update (2.2ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["updated_at", "2021-03-11 17:19:05.383692"], ["id", 2]]
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[35m (28.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 83ms (ActiveRecord: 31.3ms | Allocations: 5113)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-03-11 18:19:05 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mEvent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:23
+  Rendered users/show.html.erb within layouts/application (Duration: 43.5ms | Allocations: 2885)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 8.4ms | Allocations: 200)
+Completed 200 OK in 105ms (Views: 90.4ms | ActiveRecord: 1.2ms | Allocations: 7748)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-11 18:19:13 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-11') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  Rendered static_pages/_user_home.html.erb (Duration: 32.5ms | Allocations: 2058)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 33.7ms | Allocations: 2132)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 209)
+Completed 200 OK in 82ms (Views: 67.7ms | ActiveRecord: 1.0ms | Allocations: 7023)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-11 18:19:14 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-11') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 59.8ms | Allocations: 4332)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-11') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 9.1ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 76.1ms | Allocations: 5104)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 15.9ms | Allocations: 791)
+Completed 200 OK in 128ms (Views: 123.9ms | ActiveRecord: 2.1ms | Allocations: 9921)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2021-03-11 18:19:19 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 6.7ms | Allocations: 463)
+  Rendered events/_attend_form.html.erb (Duration: 20.9ms | Allocations: 1514)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 59.5ms | Allocations: 3612)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 198)
+Completed 200 OK in 110ms (Views: 97.5ms | ActiveRecord: 1.2ms | Allocations: 8220)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-11 18:19:20 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"Vv+1NOQVS4DsTCOcZVDfHvvFIrYIbNJA4/TXkitWoJ7xmd5DxbC7OIZ0j/KE/AjZoV7U+qpJ0dBvFk7Eqa48xQ==", "invite"=>{"event_id"=>"2"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (2.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (6.1ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 2], ["created_at", "2021-03-11 17:19:20.659730"], ["updated_at", "2021-03-11 17:19:20.659730"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 9.8ms | Allocations: 7723)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: index 'index_invites_on_invitee_id_and_even_id'):
+  
+app/models/user.rb:31:in `attend!'
+app/controllers/invites_controller.rb:4:in `create'
+Started POST "/__web_console/repl_sessions/5c43d14ad528feca6c7fbfcc7ae466d4/trace" for 127.0.0.1 at 2021-03-11 18:20:09 +0100
+Started POST "/__web_console/repl_sessions/5c43d14ad528feca6c7fbfcc7ae466d4/trace" for 127.0.0.1 at 2021-03-11 18:20:12 +0100
+Started POST "/__web_console/repl_sessions/5c43d14ad528feca6c7fbfcc7ae466d4/trace" for 127.0.0.1 at 2021-03-11 18:20:14 +0100
+Started POST "/__web_console/repl_sessions/5c43d14ad528feca6c7fbfcc7ae466d4/trace" for 127.0.0.1 at 2021-03-11 18:50:37 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  [1m[35m (37.8ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "location" varchar, "date" datetime, "creator_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "description" text)[0m
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE  INDEX "index_events_on_creator_id" ON "events" ("creator_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "invites"[0m
+  [1m[35m (27.3ms)[0m  [1m[35mCREATE TABLE "invites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "invitee_id" integer, "event_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_invites_on_invitee_id_and_even_id" ON "invites" ("invitee_id", "even_id")[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE  INDEX "index_invites_on_event_id" ON "invites" ("event_id")[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE  INDEX "index_invites_on_invitee_id" ON "invites" ("invitee_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (44.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "remember_token" varchar)[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (48.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210225152939)[0m
+  [1m[35m (18.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210225102651),
+(20210225103136),
+(20210225103312),
+(20210225152143),
+(20210225152532),
+(20210225152756);
+
+[0m
+  [1m[35m (30.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-11 19:03:22.146526"], ["updated_at", "2021-03-11 19:03:22.146526"]]
+  [1m[35m (118.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (3.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-03-11 19:03:22.320742"], ["key", "environment"]]
+  [1m[35m (20.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "cb251c69a8c389815dd9078e479c6f8cb8275a6f"], ["created_at", "2021-03-11 19:03:22.373006"], ["updated_at", "2021-03-11 19:03:22.373006"]]
+  [1m[35m (19.3ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/invites" for 127.0.0.1 at 2021-03-11 20:04:46 +0100
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"Vv+1NOQVS4DsTCOcZVDfHvvFIrYIbNJA4/TXkitWoJ7xmd5DxbC7OIZ0j/KE/AjZoV7U+qpJ0dBvFk7Eqa48xQ==", "invite"=>{"event_id"=>"2"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (1.9ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 2], ["created_at", "2021-03-11 19:04:46.798953"], ["updated_at", "2021-03-11 19:04:46.798953"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Completed 500 Internal Server Error in 295ms (ActiveRecord: 10.1ms | Allocations: 26432)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: index 'index_invites_on_invitee_id_and_even_id'):
+  
+app/models/user.rb:31:in `attend!'
+app/controllers/invites_controller.rb:4:in `create'
+Started GET "/" for 127.0.0.1 at 2021-03-12 09:29:36 +0100
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  Rendered static_pages/_user_home.html.erb (Duration: 273.6ms | Allocations: 2473)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 385.6ms | Allocations: 2846)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 54.0ms | Allocations: 456)
+Completed 200 OK in 4255ms (Views: 2890.9ms | ActiveRecord: 4.4ms | Allocations: 13386)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 09:30:51 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  Rendered static_pages/_user_home.html.erb (Duration: 50.4ms | Allocations: 2054)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 56.3ms | Allocations: 2126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 203)
+Completed 200 OK in 205ms (Views: 151.1ms | ActiveRecord: 11.0ms | Allocations: 7026)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-12 09:30:52 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (14.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-12') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (15.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 565.1ms | Allocations: 6846)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-12') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 23.0ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 607.7ms | Allocations: 7859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 71.6ms | Allocations: 791)
+Completed 200 OK in 919ms (Views: 854.6ms | ActiveRecord: 37.4ms | Allocations: 13164)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2021-03-12 09:30:59 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (20.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 498.9ms | Allocations: 864)
+  Rendered events/_attend_form.html.erb (Duration: 584.5ms | Allocations: 2229)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 754.4ms | Allocations: 5025)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 10.8ms | Allocations: 205)
+Completed 200 OK in 887ms (Views: 815.2ms | ActiveRecord: 22.8ms | Allocations: 9829)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-12 09:31:08 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"YmvYzHy2RSS2ednzk6y6nHS7iD6IEBRcmgvAh9oUIprFDbO7XRO1nNxBdZ1yAG1bLiB+cio1F8wW6VnRWOy+wQ==", "invite"=>{"event_id"=>"2"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (5.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (52.4ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 2], ["created_at", "2021-03-12 08:31:08.893014"], ["updated_at", "2021-03-12 08:31:08.893014"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Completed 500 Internal Server Error in 337ms (ActiveRecord: 59.0ms | Allocations: 7828)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: index 'index_invites_on_invitee_id_and_even_id'):
+  
+app/models/user.rb:31:in `attend!'
+app/controllers/invites_controller.rb:4:in `create'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (32.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (93.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (79.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210225102651)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (11.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225102651"]]
+  [1m[35m (122.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateInvites (20210225103136)
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "invites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "invitee_id" integer, "event_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225103136"]]
+  [1m[35m (186.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEvents (20210225103312)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "location" varchar, "date" datetime, "creator_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (5.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225103312"]]
+  [1m[35m (20.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddRememberTokenToUsers (20210225152143)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (10.3ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_token" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[36mprimary::SchemaMigration Create (6.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225152143"]]
+  [1m[35m (174.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCreatorToEvents (20210225152532)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE  INDEX "index_events_on_creator_id" ON "events" ("creator_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225152532"]]
+  [1m[35m (94.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDescToEvents (20210225152756)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (7.2ms)[0m  [1m[35mALTER TABLE "events" ADD "description" text[0m
+  [1m[36mprimary::SchemaMigration Create (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225152756"]]
+  [1m[35m (47.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddIndexToInvites (20210225152939)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_invites_on_invitee_id" ON "invites" ("invitee_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_invites_on_event_id" ON "invites" ("event_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_invites_on_invitee_id_and_even_id" ON "invites" ("invitee_id", "even_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210225152939"]]
+  [1m[35m (33.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (9.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-12 09:07:30.073849"], ["updated_at", "2021-03-12 09:07:30.073849"]]
+  [1m[35m (164.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:13:29 +0100
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (20.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 47.9ms | Allocations: 848)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 52.5ms | Allocations: 948)
+Completed 200 OK in 2334ms (Views: 2106.0ms | ActiveRecord: 27.1ms | Allocations: 14363)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-12 10:13:53 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 56.3ms | Allocations: 851)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 29.3ms | Allocations: 767)
+Completed 302 Found in 189ms (Views: 158.5ms | ActiveRecord: 13.8ms | Allocations: 6042)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-12 10:13:54 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 448.4ms | Allocations: 8266)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "a6cc0a1d7701f5fbc07fca83ab9f4377cbea40f4"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 20.2ms | Allocations: 749)
+Completed 200 OK in 604ms (Views: 534.8ms | ActiveRecord: 5.5ms | Allocations: 16133)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-03-12 10:14:14 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"kibhKotxQgikQHXSqpyvTfweNyy+a4wMR8+AUDHe/f7FbB6w5a/nCYTuhwUUtfms+FRoIlBgVg5xBUoxtQS/OQ==", "user"=>{"name"=>"Ahmad", "email"=>"ahmad@gmail.com"}, "commit"=>"Create my account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (18.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "remember_token") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ahmad"], ["email", "ahmad@gmail.com"], ["created_at", "2021-03-12 09:14:14.239044"], ["updated_at", "2021-03-12 09:14:14.239044"], ["remember_token", "8348289783636d5026891741a469cd9685c618c1"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (47.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[36mUser Update (4.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "remember_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-03-12 09:14:14.452733"], ["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["id", 1]]
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[35m (66.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 395ms (ActiveRecord: 137.1ms | Allocations: 9959)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-03-12 10:14:14 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mEvent Exists? (9.2ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-12') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-12') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:23
+  Rendered users/show.html.erb within layouts/application (Duration: 124.0ms | Allocations: 2992)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.3ms | Allocations: 208)
+Completed 200 OK in 645ms (Views: 221.8ms | ActiveRecord: 17.1ms | Allocations: 12006)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2021-03-12 10:14:29 +0100
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (Duration: 90.3ms | Allocations: 2356)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.2ms | Allocations: 207)
+Completed 200 OK in 344ms (Views: 184.3ms | ActiveRecord: 0.9ms | Allocations: 11628)
+
+
+Started POST "/events" for 127.0.0.1 at 2021-03-12 10:15:45 +0100
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"Tpg/Af2k6Z0ZS4RlCFYZUuHKi6+GmFnB1P4m6DutyYqb1TN4mIr4XwZXFVUFuchWmG/Vs17eGotikHFoNlWELQ==", "event"=>{"title"=>"Ramadan feast", "location"=>"At the mosque", "description"=>"There will be much goat meat", "date"=>"2021-03-15"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[36mEvent Create (39.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "location", "date", "creator_id", "created_at", "updated_at", "description") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ramadan feast"], ["location", "At the mosque"], ["date", "2021-03-15 00:00:00"], ["creator_id", 1], ["created_at", "2021-03-12 09:15:46.169222"], ["updated_at", "2021-03-12 09:15:46.169222"], ["description", "There will be much goat meat"]]
+  ↳ app/controllers/events_controller.rb:8:in `create'
+  [1m[35m (37.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:8:in `create'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 1270ms (ActiveRecord: 77.9ms | Allocations: 10246)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-12 10:15:46 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (8.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (58.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 225.1ms | Allocations: 3106)
+  Rendered events/_attend_form.html.erb (Duration: 501.2ms | Allocations: 8078)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (29.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 633.1ms | Allocations: 10875)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 205)
+Completed 200 OK in 761ms (Views: 634.0ms | ActiveRecord: 106.8ms | Allocations: 15694)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2021-03-12 10:16:27 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/7zNWNWhtdONldzBIUIgDMOiwa3DFOks7YXBNWDK4fHeYpo+99MnSKFlvXxRT2Q0luNAkApXHNb7Q5tTZLCE6g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2f6db7b0da3ff67cf998b94f27b540ee5c206dd8"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[36mUser Update (12.4ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_token", "2ff67d03d508a0d5670665a0f947da54a4747fd2"], ["updated_at", "2021-03-12 09:16:28.958438"], ["id", 1]]
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+  [1m[35m (878.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:23:in `sign_out'
+Redirected to http://localhost:3000/
+Completed 302 Found in 1042ms (ActiveRecord: 891.2ms | Allocations: 5203)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-12 10:16:30 +0100
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 27.2ms | Allocations: 562)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 30.3ms | Allocations: 703)
+Completed 200 OK in 289ms (Views: 258.5ms | ActiveRecord: 0.5ms | Allocations: 5647)
+
+
+Started GET "/signin" for 127.0.0.1 at 2021-03-12 10:16:35 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 16.6ms | Allocations: 834)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 29.1ms | Allocations: 750)
+Completed 200 OK in 170ms (Views: 141.8ms | ActiveRecord: 1.1ms | Allocations: 6009)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-12 10:16:53 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"YGFdS0R7Rq+nf/bUV484HEXgOdVY8VAQmQfVB8WbAkgETWj+rAQ0pjVk05+IIptc0PmVUgLSx56tUMUe9msUZQ==", "session"=>{"email"=>"ryan@gmail.com"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ryan@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 28.9ms | Allocations: 719)
+Completed 200 OK in 145ms (Views: 110.1ms | ActiveRecord: 5.2ms | Allocations: 5858)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2021-03-12 10:17:14 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"LsmxO8aNQn/PFFByIpC+Noi5TqIp2ZyH+m6AX+QukUAPF+Zd5P/Q5OPkMc9SnfoO3fjPn+CaaX3sqNo54FT0Ww==", "session"=>{"email"=>"roy@gmail.com"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "roy@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 28.3ms | Allocations: 719)
+Completed 200 OK in 150ms (Views: 114.1ms | ActiveRecord: 0.4ms | Allocations: 5709)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-03-12 10:17:27 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+Redirected to http://localhost:3000/signup
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:5
+  Rendered users/index.html.erb within layouts/application (Duration: 47.7ms | Allocations: 707)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 23.4ms | Allocations: 757)
+Completed 302 Found in 159ms (Views: 155.0ms | ActiveRecord: 0.6ms | Allocations: 5351)
+
+
+Started GET "/signup" for 127.0.0.1 at 2021-03-12 10:17:28 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 31.4ms | Allocations: 1208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 29.9ms | Allocations: 741)
+Completed 200 OK in 131ms (Views: 128.2ms | ActiveRecord: 0.3ms | Allocations: 5842)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-03-12 10:17:44 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"p9i663UJ/62O1ujs+bSxHDMYJsBgQ3zxQEoI+aMQyFjwkkVxG9darK54GjtHnef9N1J5zo5IpvN2gMKYJ8qKnw==", "user"=>{"name"=>"Roy", "email"=>"roy@gmail.com"}, "commit"=>"Create my account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (10.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "remember_token") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Roy"], ["email", "roy@gmail.com"], ["created_at", "2021-03-12 09:17:44.089508"], ["updated_at", "2021-03-12 09:17:44.089508"], ["remember_token", "d85441edf374ee4e5500012071cf29d3b174c240"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (45.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[36mUser Update (3.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "remember_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-03-12 09:17:44.232654"], ["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["id", 2]]
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+  [1m[35m (40.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/helpers/sessions_helper.rb:5:in `sign_in'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 340ms (ActiveRecord: 100.8ms | Allocations: 9186)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-03-12 10:17:44 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (20.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mEvent Exists? (12.1ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mEvent Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-12') LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mEvent Exists? (6.5ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:23
+  Rendered users/show.html.erb within layouts/application (Duration: 108.6ms | Allocations: 2576)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 8.9ms | Allocations: 200)
+Completed 200 OK in 261ms (Views: 169.3ms | ActiveRecord: 45.7ms | Allocations: 7461)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-03-12 10:17:53 +0100
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (9.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date >= '2021-03-12') ORDER BY Date ASC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 100.1ms | Allocations: 2719)
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (Date < '2021-03-12') ORDER BY Date DESC[0m
+  ↳ app/views/shared/_table.html.erb:12
+  Rendered shared/_table.html.erb (Duration: 27.7ms | Allocations: 644)
+  Rendered events/index.html.erb within layouts/application (Duration: 180.2ms | Allocations: 3737)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 23.9ms | Allocations: 791)
+Completed 200 OK in 275ms (Views: 252.9ms | ActiveRecord: 11.3ms | Allocations: 8701)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-12 10:17:57 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (7.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  Rendered events/_attend.html.erb (Duration: 5.8ms | Allocations: 463)
+  Rendered events/_attend_form.html.erb (Duration: 40.8ms | Allocations: 1515)
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 125.7ms | Allocations: 3612)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 198)
+Completed 200 OK in 228ms (Views: 193.9ms | ActiveRecord: 15.3ms | Allocations: 8250)
+
+
+Started POST "/invites" for 127.0.0.1 at 2021-03-12 10:17:59 +0100
+Processing by InvitesController#create as HTML
+  Parameters: {"authenticity_token"=>"3RH2bUQd886eKhex3tg9ovzrGjsXqnaTN1qduZ/0sCR6d50aZbgDdvQSu98/dOplpnDsd7WPdQO7uATvHQwsfw==", "invite"=>{"event_id"=>"1"}, "commit"=>"Attend"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/invites_controller.rb:3:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[36mInvite Create (13.6ms)[0m  [1m[32mINSERT INTO "invites" ("invitee_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["invitee_id", 2], ["event_id", 1], ["created_at", "2021-03-12 09:18:00.064344"], ["updated_at", "2021-03-12 09:18:00.064344"]]
+  ↳ app/models/user.rb:31:in `attend!'
+  [1m[35m (29.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:31:in `attend!'
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 283ms (ActiveRecord: 49.9ms | Allocations: 9646)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-03-12 10:18:00 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (9.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:16:in `show'
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "736e40f4eddbf0282613f34e48ce42b95cfd2209"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `attending?'
+  [1m[36mInvite Load (0.6ms)[0m  [1m[34mSELECT "invites".* FROM "invites" WHERE "invites"."invitee_id" = ? AND "invites"."event_id" = ? LIMIT ?[0m  [["invitee_id", 2], ["event_id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/_cancel.html.erb:1
+  Rendered events/_cancel.html.erb (Duration: 50.7ms | Allocations: 1281)
+  Rendered events/_attend_form.html.erb (Duration: 84.0ms | Allocations: 2474)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:10
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:19
+  Rendered events/show.html.erb within layouts/application (Duration: 166.5ms | Allocations: 4617)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.2ms | Allocations: 205)
+Completed 200 OK in 285ms (Views: 252.4ms | ActiveRecord: 17.1ms | Allocations: 9216)
+
+
