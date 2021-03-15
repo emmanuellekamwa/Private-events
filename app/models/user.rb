@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  validates :name, presence: true
+  validates :email, presence: true
+
   has_many :events, foreign_key: :creator_id
 
   has_many :invites, foreign_key: :invitee_id
