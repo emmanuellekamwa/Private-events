@@ -10979,3 +10979,37 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 414ms (Views: 384.2ms | ActiveRecord: 1.4ms | Allocations: 9341)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-16 21:21:28 +0100
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "824ddf5370fc1c9a682e58e9d4a67b291b244b83"], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:15:in `current_user'
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mEvent Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date > '2021-03-16') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:8
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-16') LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:13
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."creator_id" = ? AND (date < '2021-03-16')[0m  [["creator_id", 1]]
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 312.3ms | Allocations: 11472)
+  [1m[36mEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 1], ["LIMIT", 1]]
+  ↳ app/views/static_pages/_user_home.html.erb:18
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."creator_id" = ?[0m  [["creator_id", 1]]
+  ↳ app/views/shared/_table.html.erb:12
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_table.html.erb:17
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "invites" ON "users"."id" = "invites"."invitee_id" WHERE "invites"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/shared/_table.html.erb:18
+  Rendered shared/_table.html.erb (Duration: 68.4ms | Allocations: 2611)
+  Rendered static_pages/_user_home.html.erb (Duration: 457.3ms | Allocations: 16800)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 474.2ms | Allocations: 17277)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 16.2ms | Allocations: 437)
+Completed 200 OK in 2181ms (Views: 1888.1ms | ActiveRecord: 9.8ms | Allocations: 37589)
+
+
