@@ -2,9 +2,7 @@
 <h1><%= @event.title %></h1>
 
 
-<% if signed_in? %>
-<div class="text-center"><%= render 'attend_form' %></div>
-<% end %>
+<div class="text-center"><%= render attend_button %></div>
 
 <p><b>Location: </b><%= @event.location %></p> 
 <p><b>Host: </b><%= @event.creator.name %></p>
@@ -18,6 +16,5 @@
 <ol>
 <% @event.invitees.each do |invitee| %>
    <li><%= link_to invitee.name, invitee %></li>
-
 <% end %>
 </ol>

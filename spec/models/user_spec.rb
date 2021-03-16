@@ -21,6 +21,5 @@ RSpec.describe User, type: :model do
   context 'associations' do
     it { should have_many(:events).with_foreign_key('creator_id') }
     it { should have_many(:invites).with_foreign_key('invitee_id') }
-    it { should have_many(:attended_events).through('invites') }
   end
 end
