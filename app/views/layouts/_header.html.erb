@@ -1,0 +1,10 @@
+<div class="header d-flex justify-content-between align-items-center">
+  <h3 class="text-muted mt-3">Private EventBrite</h3>
+  <ul class="nav nav-pills pull-right d-flex justify-content-end">
+    <li class="links"><%= nav_link "Home", root_path %></li>
+    <li class="links"><%= nav_link "Events", events_path %></li>
+    <li class="links"><%= nav_link "Users", users_path %></li>
+    <li class="links"><%= nav_link "About", about_path %></li>
+    <li class="links"><%= link_to header_link[:text], header_link[:path], method: header_link[:method] %></li>
+  </ul>
+</div>
